@@ -11,15 +11,16 @@
         body {
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            overflow-y: auto; /* ✅ Permet de scroller verticalement */
             font-family: 'Arial', sans-serif;
             background: linear-gradient(to bottom right, #ffe6f0, #ffb6c1);
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
+            align-items: flex-start; /* ✅ Aligné en haut pour scroller */
+            min-height: 100vh;
             text-align: center;
             position: relative;
+            scroll-behavior: smooth; /* ✅ Scroll fluide */
         }
 
         /* Conteneur principal */
@@ -29,6 +30,7 @@
             width: 100%;
             max-width: 400px;
             padding: 15px;
+            margin-top: 30px;
         }
 
         /* Image de départ */
@@ -63,7 +65,7 @@
             padding: 15px;
             border-radius: 15px;
             max-width: 85%;
-            margin: auto;
+            margin: 20px auto;
             display: none;
             white-space: pre-line;
             text-align: center;
@@ -101,7 +103,7 @@
             overflow: hidden;
             border-radius: 20px;
             box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
-            margin: 20px auto 0 auto;
+            margin: 20px auto;
             display: none;
         }
 
@@ -145,6 +147,11 @@
             100% {
                 transform: translateY(110vh) rotate(360deg);
             }
+        }
+
+        /* ✅ Espace en bas pour scroll confortable */
+        .bottom-space {
+            height: 80px;
         }
 
         audio {
@@ -199,10 +206,12 @@
                 <img src="https://source.unsplash.com/300x300/?flowers">
             </div>
 
-            <audio autoplay loop>
-                <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
-            </audio>
+            <div class="bottom-space"></div>
         </div>
+
+        <audio autoplay loop>
+            <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+        </audio>
     </div>
 
     <script>
@@ -222,6 +231,9 @@
             setTimeout(() => {
                 carousel.style.display = 'block';
             }, 2000);
+
+            // ✅ Scroll automatique jusqu'au message
+            romanticMessage.scrollIntoView({ behavior: 'smooth' });
         });
 
         // Carousel automatique
