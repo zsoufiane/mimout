@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Déclaration d'Amour</title>
+    <!-- Police romantique -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right, #ffe6f0, #ffb6c1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Conteneur principal */
+        .container {
+            z-index: 10;
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            padding: 15px;
+        }
+
+        /* Image de départ */
+        .start-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+        }
+
+        /* Bouton/texte cliquable */
+        .start-text {
+            margin-top: 15px;
+            font-size: 1.2em;
+            color: #ff4d94;
+            cursor: pointer;
+            text-shadow: 1px 1px 5px rgba(255, 0, 128, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .start-text:hover {
+            transform: scale(1.1);
+        }
+
+        /* Poème centré */
+        .romantic-message {
+            font-size: 1em;
+            line-height: 1.5;
+            color: #ff4d94;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 15px;
+            max-width: 85%;
+            margin: auto;
+            display: none;
+            white-space: pre-line;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+            animation: fadeIn 1.5s ease forwards;
+            position: relative;
+        }
+
+        /* Animation fade-in */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Titre romantique */
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #ff4d94;
+            font-size: 2em;
+            text-shadow: 2px 2px 8px rgba(255, 0, 128, 0.4);
+            margin-bottom: 15px;
+        }
+
+        /* Carousel */
+        .carousel {
+            width: 240px;
+            height: 240px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+            margin: 20px auto 0 auto;
+            display: none;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .carousel img.active {
+            display: block;
+            animation: fade 1s ease-in-out;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Emojis d'amour */
+        .emoji {
+            position: absolute;
+            top: -50px;
+            font-size: 1.8rem;
+            opacity: 0.9;
+            animation: fall 10s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Écran d'accueil -->
+        <div id="start-screen">
+            <img src="./maha1.jpg" class="start-image" alt="Maha">
+            <div class="start-text" id="start-text">Pardon.. je peux faire mieux</div>
+        </div>
+
+        <!-- Message romantique et carrousel -->
+        <div id="main-content" style="display: none;">
+            <h1>Joyeux Anniversaire ❤️</h1>
+
+            <div class="romantic-message" id="romantic-message">
+                Maha.. joyeux anniversaire.. 23 ans !!!
+
+                T’es la révélation de ma vie Mimi 💕
+
+                Je veux passer le restant de mes jours avec toi.
+
+                J’ai passé le plus bel été de ma vie avec toi, tu as redonné un second souffle à ma vie.
+
+                Il y a pas un seul jour où je ne veux pas t’aimer.. tu me manques tous les jours.
+
+                Tu as passé ton anniversaire à Joigny mais j’aurai adoré le passer avec toi, à Paris.
+
+                Paris nous ressemble tellement, j’ai des souvenirs gravés dans cette ville avec toi.
+
+                Je veux en graver davantage et partout dans le monde..
+
+                Ton sourire me manque, ton odeur me manque, ton rire mignon me manque, tes petites remarques me
+                manquent.
+
+                Je veux tout te donner, tout découvrir avec toi..
+
+                Santé et bonheur ma chérie, qu’Allah te garde le plus longtemps auprès de moi.
+
+                Je t’aime Mimi ❤️
+                89 Axleph Mimouche Miminou
+            </div>
+
+            <div class="carousel" id="carousel">
+                <img src="https://source.unsplash.com/300x300/?couple,love" class="active">
+                <img src="https://source.unsplash.com/300x300/?romantic">
+                <img src="https://source.unsplash.com/300x300/?flowers">
+            </div>
+
+            <audio autoplay loop>
+                <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+
+    <script>
+        const startText = document.getElementById('start-text');
+        const startScreen = document.getElementById('start-screen');
+        const mainContent = document.getElementById('main-content');
+        const romanticMessage = document.getElementById('romantic-message');
+        const carousel = document.getElementById('carousel');
+
+        // Action au clic
+        startText.addEventListener('click', () => {
+            startScreen.style.display = 'none';
+            mainContent.style.display = 'block';
+            romanticMessage.style.display = 'block';
+
+            // Affiche le carrousel après 2 secondes
+            setTimeout(() => {
+                carousel.style.display = 'block';
+            }, 2000);
+        });
+
+        // Carousel automatique
+        const images = document.querySelectorAll('.carousel img');
+        let index = 0;
+
+        setInterval(() => {
+            if (carousel.style.display === 'block') {
+                images[index].classList.remove('active');
+                index = (index + 1) % images.length;
+                images[index].classList.add('active');
+            }
+        }, 3000);
+
+        // Emojis d'amour qui tombent
+        const emojis = ['❤️', '💖', '💘', '💝', '💕', '💓', '💞'];
+
+        function createEmoji() {
+            const emoji = document.createElement('div');
+            emoji.classList.add('emoji');
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * window.innerWidth + 'px';
+            emoji.style.animationDuration = (5 + Math.random() * 5) + 's';
+            document.body.appendChild(emoji);
+
+            setTimeout(() => {
+                emoji.remove();
+            }, 10000);
+        }
+
+        setInterval(createEmoji, 400);
+    </script>
+</body>
+
+</html>
